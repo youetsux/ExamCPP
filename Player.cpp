@@ -1,13 +1,18 @@
 #include "Player.h"
 #include "DxLib.h"
+#include "globals.h"
+#include "Input.h"
+
 
 namespace
 {
-	const float PLAYER_INIT_X = 0.0f; // プレイヤーの初期X座標;
-	const float PLAYER_INIT_Y = 0.0f; // プレイヤーの初期Y座標;
-	const float PLAYER_INIT_SPEED = 5.0f; // プレイヤーの初期移動速度;
-	const int PLAYER_IMAGE_WIDTH = 64; // プレイヤーの画像の幅;
-	const int PLAYER_IMAGE_HEIGHT = 64; // プレイヤーの画像の高さ;
+	const float PLAYER_INIT_SPEED = 200.0f; // プレイヤーの初期移動速度;
+	const int PLAYER_IMAGE_WIDTH = 48; // プレイヤーの画像の幅;
+	const int PLAYER_IMAGE_HEIGHT = 48; // プレイヤーの画像の高さ;
+	const int PLAYER_BASE_MARGIN = 32; // プレイヤーの基準マージン;
+
+	const float PLAYER_INIT_X = WIN_WIDTH/2 - PLAYER_IMAGE_WIDTH/2; // プレイヤーの初期X座標;
+	const float PLAYER_INIT_Y = WIN_HEIGHT - PLAYER_IMAGE_HEIGHT - PLAYER_BASE_MARGIN; // プレイヤーの初期Y座標;
 }
 
 
@@ -31,6 +36,13 @@ Player::~Player()
 
 void Player::Update()
 {
+	float dt = GetDeltaTime(); // フレーム間の時間差を取得
+	if (Input::IsKeepKeyDown(KEY_INPUT_LEFT)) {
+		x_ =  x_  - speed_ * dt; // 左に移動
+	}
+	if (Input::IsKeepKeyDown(KEY_INPUT_RIGHT)) {
+		x_ = x_ + speed_ * dt; // 右に移動
+	}
 }
 
 void Player::Draw()
