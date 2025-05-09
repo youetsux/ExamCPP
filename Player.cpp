@@ -32,6 +32,7 @@ Player::Player()
 
 Player::~Player()
 {
+	//画面サイズを解放（あとで書く！）
 }
 
 void Player::Update()
@@ -47,6 +48,7 @@ void Player::Update()
 
 void Player::Draw()
 {
+	// プレイヤーの画像を描画(画像の原点は左上)
 	DrawExtendGraph(x_, y_, x_ + PLAYER_IMAGE_WIDTH, y_ + PLAYER_IMAGE_HEIGHT,
 		hImage_, TRUE);
 }
