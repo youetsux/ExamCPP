@@ -1,8 +1,8 @@
 #include "DxLib.h"
-#include "Player.h"
-#include "Enemy.h"
 #include "globals.h"
 #include "input.h"
+#include <vector>
+#include "Stage.h"
 
 
 namespace
@@ -49,12 +49,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	DxInit();
 	crrTime = GetNowCount();
 	prevTime = GetNowCount();
+	
+	Stage* stage = new Stage(); // ステージオブジェクトの生成
 
-	Player* player = new Player();
-	Enemy* enemy = new Enemy[10];
-	for (int i = 0; i < 10; i++) {
-		enemy[i].SetPos(100 + i * 50, 100);
-	}
 
 	while (true)
 	{
@@ -67,17 +64,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		gDeltaTime = deltaTime; // グローバル変数に保存
 
 		//ここにやりたい処理を書く(ここから）
-		
-		player->Update();
-		player->Draw();
-
-		
-		for (int i = 0;i < 10;i++) {
-			(enemy + i)->Update();
-			(enemy + i)->Draw();
-			//enemy[i].Update();
-			//enemy[i].Draw();
-		}
+		ObjetUpdate();
+		ObjctDraw();
 
 		//ここにやりたい処理を書く（ここまで）
 
