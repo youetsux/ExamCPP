@@ -64,9 +64,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		gDeltaTime = deltaTime; // グローバル変数に保存
 
 		//ここにやりたい処理を書く(ここから）
-		ObjetUpdate();
-		ObjctDraw();
-
+		stage->Update(); // ステージの更新
+		stage->Draw(); // ステージの描画
 		//ここにやりたい処理を書く（ここまで）
 
 
