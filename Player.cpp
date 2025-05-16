@@ -28,6 +28,7 @@ Player::Player()
 	x_ = PLAYER_INIT_X; // 初期座標
 	y_ = PLAYER_INIT_Y; // 初期座標
 	speed_ = PLAYER_INIT_SPEED; // 移動速度
+	AddGameObject(this); // プレイヤーオブジェクトをゲームオブジェクトのベクターに追加
 }
 
 Player::~Player()

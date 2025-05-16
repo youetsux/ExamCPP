@@ -4,7 +4,7 @@
 
 namespace
 {
-	const int ENEMY_NUM = 10*7; // 敵の数
+	const int ENEMY_NUM = 10 * 7; // 敵の数
 	const int ENEMY_COL_SIZE = 10; // 敵の列数
 	const int ENEMY_ROW_SIZE = 7; // 敵の行数
 }
@@ -12,6 +12,7 @@ namespace
 Stage::Stage()
 	:GameObject(), player_(nullptr)
 {
+	AddGameObject(this); // ステージオブジェクトをゲームオブジェクトのベクターに追加
 	player_ = new Player(); // プレイヤーオブジェクトの生成
 	enemy_ = std::vector<Enemy*>(ENEMY_NUM); // 敵オブジェクトの生成
 	for (int i = 0; i < ENEMY_NUM; i++) {
