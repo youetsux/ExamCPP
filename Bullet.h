@@ -9,7 +9,6 @@ private:
 	int hImage_;  //弾の画像ハンドル
 	float x_, y_; //弾の座標
 	float speed_; //弾の移動速度
-	bool isAlive_; //弾が生きているかどうか
 	int isize_x, isize_y; //弾の表示サイズ
 public:
 	Bullet();

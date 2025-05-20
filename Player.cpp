@@ -14,6 +14,8 @@ namespace
 
 	const float PLAYER_INIT_X = WIN_WIDTH/2 - PLAYER_IMAGE_WIDTH/2; // プレイヤーの初期X座標;
 	const float PLAYER_INIT_Y = WIN_HEIGHT - PLAYER_IMAGE_HEIGHT - PLAYER_BASE_MARGIN; // プレイヤーの初期Y座標;
+	const int BULLET_IMAGE_MARGIN = 17; // 弾の画像のマージン;
+
 }
 
 
@@ -48,7 +50,7 @@ void Player::Update()
 	}
 
 	if (Input::IsKeyDown(KEY_INPUT_SPACE)) {
-		new Bullet(x_, y_); // 弾を発射
+		new Bullet(x_ + BULLET_IMAGE_MARGIN, y_); // 弾を発射
 	}
 }
 

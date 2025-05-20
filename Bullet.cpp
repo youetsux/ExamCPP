@@ -17,20 +17,22 @@ namespace
 Bullet::Bullet()
 	:GameObject(),hImage_(-1),
 	x_(0), y_(0), speed_(0),
-	isAlive_(true), isize_x(BULLET_IMAGE_WIDTH), isize_y(BULLET_IMAGE_HEIGHT)
+	isize_x(BULLET_IMAGE_WIDTH), isize_y(BULLET_IMAGE_HEIGHT)
 {
 	hImage_ = LoadGraph(BULLET_IMAGE_PATH.c_str()); // ’e‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
 	speed_ = BULLET_INIT_SPEED; // ˆÚ“®‘¬“x
+	isAlive_ = true; // ’e‚ª¶‚«‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	AddGameObject(this);
 }
 
 Bullet::Bullet(float x, float y)
 	:GameObject(), hImage_(-1),
 	x_(x), y_(y), speed_(0),
-	isAlive_(true), isize_x(BULLET_IMAGE_WIDTH), isize_y(BULLET_IMAGE_HEIGHT)
+	isize_x(BULLET_IMAGE_WIDTH), isize_y(BULLET_IMAGE_HEIGHT)
 {
 	hImage_ = LoadGraph(BULLET_IMAGE_PATH.c_str()); // ’e‚Ì‰æ‘œ‚ğ“Ç‚İ‚Ş
 	speed_ = BULLET_INIT_SPEED; // ˆÚ“®‘¬“x
+	isAlive_ = true; // ’e‚ª¶‚«‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	AddGameObject(this);
 }
 
@@ -55,6 +57,7 @@ void Bullet::Draw()
 {
 	if (isAlive_)
 	{
+		
 		DrawExtendGraph(x_, y_, x_ + isize_x, y_ + isize_y,
 			hImage_, TRUE); // ’e‚Ì•`‰æ
 	}
