@@ -25,7 +25,7 @@ namespace
 
 
 Player::Player()
-	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0)
+	:GameObject(), hImage_(-1), x_(0), y_(0), speed_(0), imageSize_({ PLAYER_IMAGE_WIDTH ,PLAYER_IMAGE_HEIGHT})
 {
 	hImage_ = LoadGraph("Assets\\tiny_ship5.png"); // プレイヤーの画像を読み込む
 	if (hImage_ == -1) {
@@ -37,7 +37,7 @@ Player::Player()
 	speed_ = PLAYER_INIT_SPEED; // 移動速度
 	for (int i = 0;i < PLAYER_BULLET_NUM;i++)
 	{
-		bullets_.push_back(new Bullet()); // 弾のベクターを初期化
+		bullets_.push_back(new Bullet(-10, -10)); // 弾のベクターを初期化
 	}
 
 	AddGameObject(this); // プレイヤーオブジェクトをゲームオブジェクトのベクターに追加
