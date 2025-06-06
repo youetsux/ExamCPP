@@ -52,6 +52,7 @@ Enemy::Enemy(int id, ETYPE type)
 		"Assets\\tiny_ship9.png"   // BOSS
 	};
 
+	moveTime_ = 0.0f;
 	hImage_ = LoadGraph( imagePath[type_].c_str() ); // 敵の画像を読み込む
 	if (hImage_ == -1) {
 		// 画像の読み込みに失敗した場合のエラーハンドリング
@@ -74,6 +75,12 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
+
+	float period =10.0f; // 1往復にかける時間（秒）
+	float omega = 2.0f * 3.14159265f / period; // 角速度 ω = 2π / T
+	moveTime_ = moveTime_ + GetDeltaTime();
+	x_ = xorigin_ + xMoveMax_/2.0 * sinf(omega * moveTime_ );
+	y_ = y_;
 }
 
 void Enemy::Draw()

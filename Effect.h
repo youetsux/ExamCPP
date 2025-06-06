@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "globals.h"
+#include <vector>
 
 class Effect :
     public GameObject
@@ -12,9 +13,11 @@ public:
     void Draw() override;
 protected:
 private:
-    int hImage_;
+    std::vector<int> hImage_;
     Point pos_;
-    float animeTimer_;
+    float animeTimer_;//エフェクトの寿命
+    float frameTimer_;//アニメのコマのタイマー
+    int frame_;//フレーム番号
 };
 
 //敵と弾がぶつかった場所に発生して3秒で消える
