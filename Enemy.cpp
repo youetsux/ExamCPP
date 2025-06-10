@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include <string>
 #include "Effect.h"
+#include "EnemyBeam.h"
 
 namespace
 {
@@ -75,12 +76,22 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
+	static float beamTimer = 3.0f; // 弾の発射タイマー
 
 	float period =10.0f; // 1往復にかける時間（秒）
 	float omega = 2.0f * 3.14159265f / period; // 角速度 ω = 2π / T
 	moveTime_ = moveTime_ + GetDeltaTime();
 	x_ = xorigin_ + xMoveMax_/2.0 * sinf(omega * moveTime_ );
 	y_ = y_;
+
+	if (beamTimer < 0)
+	{
+		// 弾を発射
+		new EnemyBeam(x_ + ENEMY_IMAGE_WIDTH / 2, y_ + ENEMY_IMAGE_HEIGHT); // 敵の弾を生成
+		beamTimer = 3.0f; // タイマーをリセット
+	}
+
+	beamTimer -= GetDeltaTime(); // タイマーを減少
 }
 
 void Enemy::Draw()
